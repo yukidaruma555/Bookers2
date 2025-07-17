@@ -1,0 +1,22 @@
+
+<div class="col-md-8 offset-md-1">
+<h2>Users</h2>
+<table class="table">
+<thead>
+<tr>
+<th>image</th>
+<th>name</th>
+<th colsapan="3"></th>
+</tr>
+</thead> 
+
+<tbody>
+<tr>
+<td><%= image_tag 'no_image.jpg' %></td>
+<td><% @users.each do |user| %></td>
+<td><%= link_to "show", users_path %></td>  
+</tr>
+</tbody>
+<% end %>
+</table>
+</div>
