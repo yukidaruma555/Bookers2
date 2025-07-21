@@ -8,17 +8,26 @@
 <tr>
 <th>image</th>
 <th>name</th>
-<th colsapan="3"></th>
+<th colspan="3"></th>
 </tr>
 </thead> 
 
 <tbody>
+<% @users.each do |user| %>
 <tr>
-<td><%= image_tag 'no_image.jpg' %></td>
-<td><% @users.each do |user| %></td>
-<td><%= link_to "show", users_path %></td>  
-</tr>
-</tbody>
+<td>
+<% if user.profile_image.attached? %>
+  <%= image_tag user.profile_image, size:"100x100" %>
+<% else %>
+ <%= image_tag "no_image.jpg", size: "100x100" %>
 <% end %>
+
+</td>
+<td><%= user.name %></td>
+<td><%= link_to "show", user_path(user) %></td>  
+</tr>
+
+<% end %>
+</tbody>
 </table>
 </div>
