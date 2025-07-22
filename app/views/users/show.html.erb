@@ -1,9 +1,16 @@
-<%= render 'list', user: @user %>
-<%= render 'books/list', book: @book %>
+<div>
+ <%= flash[:notice] %>
+</div>
 
-<div class="col-md-8 offset-md-1">
+
+<%= render 'list', user: @user %>
+<%= render 'books/list', book: @new_book %>
+
+
+
+<div class="col-md-8">
   <h2>books</h2> 
-  <table class="table table-hover table-inverse">
+    <table class="table table-hover table-inverse">
       <thead>
        <tr> 
         <th></th>
@@ -11,18 +18,22 @@
         <th>Opinion</th>
        </tr>
       </thead>
-      <tbody>
-        
-        <tr>
-        <td>
-    
-       
-         </td>
       
-        <td><%= link_to @book.title, book_path(@book.id) %></td>
-        <td><%= @book.body %></td>
-    
-        </tr>        
+      <tbody>  
+       <% @book.each do |book| %>
+        <tr>
+         <td>
+          <% if @user.profile_image.attached? %>
+           <%= image_tag @user.profile_image, size: "100x100" %>
+          <% else %>
+           <%= image_tag 'no_image.jpg', size: "100x100" %>
+          <% end %>
+         </td>
+         <td><%= link_to @book.title, book_path(@book.id) %></td>
+         <td><%= @book.body %></td>
+        </tr>     
+       <% end %>    
       </tbody>
     </table>
 </div>
+
