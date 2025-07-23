@@ -2,11 +2,13 @@
  <%= flash[:notice] %>
 </div>
 
+<div class="container px-5 px-sm-o">
+<div class="row">
 
+<div class="col-md-3">
 <%= render 'list', user: @user %>
 <%= render 'books/list', book: @new_book %>
-
-
+</div>
 
 <div class="col-md-8">
   <h2>books</h2> 
@@ -20,7 +22,7 @@
       </thead>
       
       <tbody>  
-       <% @book.each do |book| %>
+       <% @books.each do |book| %>
         <tr>
          <td>
           <% if @user.profile_image.attached? %>
@@ -29,11 +31,14 @@
            <%= image_tag 'no_image.jpg', size: "100x100" %>
           <% end %>
          </td>
-         <td><%= link_to @book.title, book_path(@book.id) %></td>
-         <td><%= @book.body %></td>
+         <td><%= link_to book.title, book_path(book) %></td>
+         <td><%= book.body %></td>
         </tr>     
        <% end %>    
       </tbody>
     </table>
 </div>
+</div>
+</div>
+
 

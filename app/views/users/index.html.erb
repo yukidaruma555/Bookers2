@@ -1,7 +1,10 @@
+<div class="container px-5 px-sm-o">
+<div class="row">
 
-
-<%= render 'list', user: current_user %>
-<%= render 'books/list', book: @book %>
+<div class="col-md-3">
+  <%= render 'list', user: current_user %>
+  <%= render 'books/list', book: @book %>
+</div>
 
 <div class="col-md-8 offset-md-1">
   <h2>Users</h2>
@@ -32,3 +35,5 @@
    </table>
 </div>
 
+</div>
+</div>
