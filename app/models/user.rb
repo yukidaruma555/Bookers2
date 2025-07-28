@@ -9,7 +9,9 @@ class User < ApplicationRecord
   has_one_attached :profile_image
 
   validates :name, presence: true, uniqueness: true, length: { minimum: 2, maximum: 20 }
-  validates :introduction, presence: true, length: { maximum: 50 }
+  with_options on: :update do
+    validates :introduction, presence: true, length: { maximum: 50 }
+  end
   
 
   def get_profile_image(width,height)
