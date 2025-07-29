@@ -1,15 +1,12 @@
-s
-
-
 <div class="container px-5 px-sm-o">
 <div class="row">
-<% if @book.errors.any? %>
-  <%= @book.errors.count %> error prohibited this obj from being saved :
-  <ul> 
-  <% @book.errors.full_messages.each do |message| %>
-    <li><%= message %></li>
-    <% end %>
-    </ul>
+    <% if @book.errors.any? %>
+      <%= @book.errors.count %> error prohibited this obj from being saved :
+      <ul> 
+        <% @book.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+        <% end %>
+      </ul>
     <% end %>
 
 <div class="col-md-3">
@@ -28,14 +25,15 @@ s
        </tr>
       </thead>
       <tbody>
-      
          <% @books.each do |book| %>
           <tr>
-            <td><%= link_to user_path(book.user) do %>
-            <%= image_tag book.user.get_profile_image(100,100) %>
+            <td>
+              <%= link_to (book.user) do %>
+               <%= image_tag book.user.get_profile_image(100,100) %>
             </td>
-            <% end %>
-            <td><%= link_to book.title, book_path(book.id) %></td>
+              <% end %>
+            <td>
+              <%= link_to book.title, book_path(book.id) %></td>
             <td><%= book.body %></td>
           </tr>
         <% end %>
